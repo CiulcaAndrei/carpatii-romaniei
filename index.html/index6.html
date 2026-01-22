@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Autentificare - Carpații României</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <div class="decorative-element"></div>
+        <div class="decorative-element"></div>
+
+        <div class="topnav" id="myTopnav">
+            <a href="index1.html">Acasă</a>
+            <div class="dropdown">
+                <button class="dropbtn">Carpați</button>
+                <div class="dropdown-content">
+                    <a href="index.html">Occidentali</a>
+                    <a href="index3.html">Orientali</a>
+                    <a href="index5.html">Meridionali</a>
+                    <a href="index9.html">Vârfuri</a>
+                </div>
+            </div>
+            <a href="index7.html">Test</a>
+            <a href="index11.html">Natură</a>
+            <a href="contact.html">Contact</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+        </div>
+
+        <div class="hero-section">
+            <h1>Autentificare</h1>
+            <p>Bine ai venit! Poți să te autentifici sau să continui fără cont.</p>
+        </div>
+
+        <div class="login-container">
+            <form class="login-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Introdu adresa ta de email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Parolă</label>
+                    <input type="password" id="password" name="password" placeholder="Introdu parola ta" required>
+                </div>
+
+                <div class="login-options">
+                    <label>
+                        <input type="checkbox" name="remember"> Ține-mă minte
+                    </label>
+                    <a href="#">Ai uitat parola?</a>
+                </div>
+
+                <button type="submit" class="login-btn">Autentificare</button>
+                <a href="index1.html" class="skip-btn">Sari peste</a>
+            </form>
+
+            <div class="social-login">
+                <p>Sau autentifică-te cu</p>
+                <div class="social-buttons">
+                    <a href="#" class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-btn google">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="#" class="social-btn twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Va multumesc pentru vizita!</p>
+        </div>
+    </div>
+
+    <div class="floating-register" id="floatingRegister">
+        <div class="register-icon" onclick="toggleRegisterDropdown()">
+            <i class="fas fa-user-plus"></i>
+        </div>
+        <div class="register-dropdown" id="registerDropdown">
+            <button class="close-dropdown" onclick="toggleRegisterDropdown()">&times;</button>
+            <form id="registerForm" onsubmit="handleRegister(event)">
+                <input type="email" id="registerEmail" placeholder="Introdu adresa de email" required>
+                <input type="password" id="registerPassword" placeholder="Introdu parola" required>
+                <button type="submit">Autentificare</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+
+        // Registration functionality
+        function toggleRegisterDropdown() {
+            const dropdown = document.getElementById('registerDropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        function handleRegister(event) {
+            event.preventDefault();
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+
+            if (password === '0000') {
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userEmail', email);
+                document.getElementById('floatingRegister').style.display = 'none';
+                alert('Autentificare reușită!');
+            } else {
+                alert('Parolă incorectă! Parola implicită este: 0000');
+            }
+        }
+
+        // Check if user is already logged in
+        window.addEventListener('load', function() {
+            if (localStorage.getItem('isLoggedIn') === 'true') {
+                document.getElementById('floatingRegister').style.display = 'none';
+            }
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const registerIcon = document.querySelector('.register-icon');
+            const dropdown = document.getElementById('registerDropdown');
+            if (!registerIcon.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const nav = document.querySelector('.topnav');
+            const menuItems = document.querySelectorAll('.topnav a');
+            let isExpanded = false;
+            let lastScrollTop = 0;
+
+            function handleNavScroll() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    nav.classList.add('nav-collapsed');
+                    isExpanded = false;
+                } else if (scrollTop < lastScrollTop) {
+                    nav.classList.remove('nav-collapsed');
+                    isExpanded = true;
+                }
+                
+                lastScrollTop = scrollTop;
+            }
+
+            window.addEventListener('scroll', handleNavScroll);
+
+            menuItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        nav.classList.add('nav-collapsed');
+                        isExpanded = false;
+                    }
+                });
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    nav.classList.remove('nav-collapsed');
+                    isExpanded = true;
+                } else {
+                    nav.classList.add('nav-collapsed');
+                    isExpanded = false;
+                }
+            });
+
+            if (window.innerWidth <= 768) {
+                nav.classList.add('nav-collapsed');
+                isExpanded = false;
+            }
+        });
+    </script>
+</body>
+</html>

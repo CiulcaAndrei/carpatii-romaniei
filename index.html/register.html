@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Înregistrare - Carpații României</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+     
+
+    <div class="page-container">
+        <div class="decorative-element"></div>
+        <div class="decorative-element"></div>
+
+        <div class="topnav" id="myTopnav">
+            <a href="index1.html">Acasă</a>
+            <div class="dropdown">
+                <button class="dropbtn">Carpați</button>
+                <div class="dropdown-content">
+                    <a href="index.html">Occidentali</a>
+                    <a href="index3.html">Orientali</a>
+                    <a href="index5.html">Meridionali</a>
+                    <a href="index9.html">Vârfuri</a>
+                </div>
+            </div>
+            <a href="index7.html">Test</a>
+            <a href="index11.html">Natură</a>
+            <a href="contact.html">Contact</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+        </div>
+
+        <div class="hero-section">
+            <h1>Înregistrare</h1>
+            <p>Creează-ți un cont pentru a accesa toate funcționalitățile site-ului</p>
+        </div>
+
+        <div class="login-container register-container">
+            <form class="login-form" action="#" method="POST" id="registerForm">
+                <div class="form-group">
+                    <label for="fullname">Nume Complet</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Introdu numele tău complet" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Introdu adresa ta de email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Parolă</label>
+                    <div class="password-input">
+                        <input type="password" id="password" name="password" placeholder="Creează o parolă puternică" required>
+                        <i class="fas fa-eye toggle-password"></i>
+                    </div>
+                    <div class="password-strength">
+                        <div class="strength-bar">
+                            <div class="strength-level"></div>
+                        </div>
+                        <span class="strength-text">Puterea parolei</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">Confirmă Parola</label>
+                    <div class="password-input">
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmă parola" required>
+                        <i class="fas fa-eye toggle-password"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-container">
+                        <input type="checkbox" name="terms" required>
+                        <span class="checkmark"></span>
+                        Sunt de acord cu <a href="#" class="terms-link">Termenii și Condițiile</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="login-btn">Creează Cont</button>
+            </form>
+
+            <div class="social-login">
+                <p>Sau înregistrează-te cu</p>
+                <div class="social-buttons">
+                    <a href="#" class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-btn google">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="#" class="social-btn twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="register-link">
+                Ai deja un cont? <a href="index6.html">Autentifică-te aici</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Va multumesc pentru vizita!</p>
+        </div>
+    </div>
+
+    <script>
+
+        // Funcționalitate pentru afișarea/ascunderea parolei
+        document.querySelectorAll('.toggle-password').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const input = this.previousElementSibling;
+                const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                input.setAttribute('type', type);
+                this.classList.toggle('fa-eye');
+                this.classList.toggle('fa-eye-slash');
+            });
+        });
+
+        // Verificare putere parolă
+        const password = document.getElementById('password');
+        const strengthBar = document.querySelector('.strength-level');
+        const strengthText = document.querySelector('.strength-text');
+
+        password.addEventListener('input', function() {
+            const val = password.value;
+            let strength = 0;
+            
+            if (val.length >= 8) strength += 1;
+            if (val.match(/[a-z]/) && val.match(/[A-Z]/)) strength += 1;
+            if (val.match(/\d/)) strength += 1;
+            if (val.match(/[^a-zA-Z\d]/)) strength += 1;
+
+            const strengthClasses = ['weak', 'medium', 'good', 'strong'];
+            const strengthLabels = ['Slabă', 'Medie', 'Bună', 'Puternică'];
+            const strengthColors = ['#ff4444', '#ffbb33', '#00C851', '#007E33'];
+
+            strengthBar.style.width = `${(strength / 4) * 100}%`;
+            strengthBar.style.backgroundColor = strengthColors[strength - 1];
+            strengthText.textContent = strengthLabels[strength - 1];
+            strengthText.style.color = strengthColors[strength - 1];
+        });
+
+        // Validare formular
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            
+            if (password !== confirmPassword) {
+                alert('Parolele nu coincid!');
+                return;
+            }
+
+            // Aici puteți adăuga logica pentru trimiterea datelor către server
+            alert('Cont creat cu succes! Veți fi redirecționat către pagina de autentificare.');
+            window.location.href = 'index6.html';
+        });
+    </script>
+</body>
+</html> 

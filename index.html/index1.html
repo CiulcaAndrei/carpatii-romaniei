@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <title>Acasă - Carpații României</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <div class="decorative-element"></div>
+        <div class="decorative-element"></div>
+
+        <div class="topnav" id="myTopnav">
+            <a href="index1.html" class="active">Acasă</a>
+            <div class="dropdown">
+                <button class="dropbtn">Carpați</button>
+                <div class="dropdown-content">
+                    <a href="index.html">Occidentali</a>
+                    <a href="index3.html">Orientali</a>
+                    <a href="index5.html">Meridionali</a>
+                    <a href="index9.html">Vârfuri</a>
+                </div>
+            </div>
+            <a href="index7.html">Test</a>
+            <a href="index11.html">Natură</a>
+            <a href="contact.html">Contact</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+        </div>
+
+        <div class="hero-section">
+            <h1>Munții Carpați din România</h1>
+            <p>Descoperă frumusețea și măreția munților noștri</p>
+        </div>
+
+        <div class="intro-section">
+            <h2>Bun venit în lumea Carpaților</h2>
+            <p>Carpații reprezintă cea mai mare și cea mai importantă grupă muntoasă din România, oferind peisaje spectaculoase, biodiversitate unică și oportunități pentru activități recreative. Acest site vă invită să explorați cele patru grupe principale ale Carpaților români: Occidentali, Orientali, Meridionali și Munții Apuseni, precum și să testați cunoștințele dumneavoastră printr-un quiz interactiv.</p>
+        </div>
+
+        <div class="content">
+            <p><b>Proiect realizat de: Ciulca Andrei</b></p>
+        </div>
+
+        <div class="home-gallery">
+            <div class="home-gallery-item" onclick="openModal(this)">
+                <img src="imagini/images.jpeg" alt="Carpați Occidentali">
+                <div class="home-gallery-caption">Carpații Occidentali - Frumusețe naturală</div>
+            </div>
+            <div class="home-gallery-item" onclick="openModal(this)">
+                <img src="imagini/images (1).jpeg" alt="Carpați Orientali">
+                <div class="home-gallery-caption">Carpații Orientali - Peisaje spectaculoase</div>
+            </div>
+            <div class="home-gallery-item" onclick="openModal(this)">
+                <img src="imagini/images (2).jpeg" alt="Carpați Meridionali">
+                <div class="home-gallery-caption">Carpații Meridionali - Alpii Transilvaniei</div>
+            </div>
+        </div>
+
+        <!-- Modal pentru imagini -->
+        <div id="imageModal" class="modal" onclick="closeModal(event)">
+            <span class="close-modal" onclick="closeModal(event)">&times;</span>
+            <div class="modal-content">
+                <img class="modal-image" id="modalImg" src="" alt="">
+                <div class="modal-caption" id="modalCaption"></div>
+            </div>
+        </div>
+
+        <div class="facts-section">
+            <h2>Fapte interesante despre Carpați</h2>
+            <div class="facts-grid">
+                <div class="fact-item">
+                    <i class="fas fa-mountain"></i>
+                    <h3>Lungime totală</h3>
+                    <p>Aproximativ 1.500 km prin România</p>
+                </div>
+                <div class="fact-item">
+                    <i class="fas fa-flag"></i>
+                    <h3>Cel mai înalt vârf</h3>
+                    <p>Moldoveanu (2.544 m) în Carpații Meridionali</p>
+                </div>
+                <div class="fact-item">
+                    <i class="fas fa-water"></i>
+                    <h3>Lacuri glaciare</h3>
+                    <p>Peste 3.000 de lacuri glaciare și circuri</p>
+                </div>
+                <div class="fact-item">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Biodiversitate</h3>
+                    <p>Habitat pentru urși, lupi și peste 3.500 de specii de plante</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Va multumesc pentru vizita!</p>
+        </div>
+    </div>
+
+    <button class="back-to-top" aria-label="Înapoi sus">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

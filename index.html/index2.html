@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <title>Carpații Meridionali</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <div class="decorative-element"></div>
+        <div class="decorative-element"></div>
+
+        <div class="topnav" id="myTopnav">
+            <a href="index1.html">Acasă</a>
+            <div class="dropdown">
+                <button class="dropbtn active">Carpați</button>
+                <div class="dropdown-content">
+                    <a href="index.html">Occidentali</a>
+                    <a href="index3.html">Orientali</a>
+                    <a href="index5.html">Meridionali</a>
+                    <a href="index9.html">Vârfuri</a>
+                </div>
+            </div>
+            <a href="index7.html">Test</a>
+            <a href="index11.html">Natură</a>
+            <a href="contact.html">Contact</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+        </div>
+
+        <div class="hero-section">
+            <h1>Carpatii Meridionali</h1>
+            <p>Descoperă frumusețea și măreția munților din sudul României</p>
+        </div>
+
+        <div class="content">
+            <h3>
+                <pre style="font-family: 'Poppins', sans-serif;">
+Carpații Meridionali (Alpii Transilvaniei) reprezintă cel mai masiv și mai înalt 
+segment al Carpaților Românești. Sunt situați în partea de sud a țării, între Valea 
+Prahovei (la est) și culoarul Timiș-Cerna (la vest).
+
+<h2>Limite Carpatii Meridionali</h2>
+La nord se învecinează cu Depresiunea Colinară a Transilvaniei, iar la sud cu 
+Subcarpații Getici și Podișul Getic. Carpații Meridionali au o lungime de aproximativ 
+250 km și o lățime ce variază între 45 și 70 km.
+
+<!-- ... restul conținutului ... -->
+                </pre>
+            </h3>
+        </div>
+
+        <div class="section-title">
+            <h2>Galerie Carpați Meridionali</h2>
+        </div>
+
+        <div class="image-gallery">
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="imagini/meridionali-1024x1024.webp" alt="Harta Carpati Meridionali">
+                <div class="gallery-caption">Harta Carpaților Meridionali</div>
+            </div>
+            <!-- ... restul galeriei ... -->
+        </div>
+
+        <!-- Modal pentru imagini -->
+        <div id="imageModal" class="modal" onclick="closeModal(event)">
+            <span class="close-modal" onclick="closeModal(event)">&times;</span>
+            <div class="modal-content">
+                <img class="modal-image" id="modalImg" src="" alt="">
+                <div class="modal-caption" id="modalCaption"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Va multumesc pentru vizita!</p>
+        </div>
+    </div>
+
+    <button class="back-to-top" aria-label="Înapoi sus">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html> 
